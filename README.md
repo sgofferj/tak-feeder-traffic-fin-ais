@@ -44,7 +44,7 @@ Here is an example for a docker-compose.yml file:
 version: '2.0'
 
 services:
-  adsbone:
+  aisfin:
     image: ghcr.io/sgofferj/tak-feeder-traffic-fin-ais:latest
     restart: always
     networks:
