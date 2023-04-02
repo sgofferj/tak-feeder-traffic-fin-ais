@@ -18,6 +18,7 @@ The following values are supported and can be provided either as environment var
 | REMOTE_SERVER_URL | empty | (mandatory) TAK server full URL, e.g. ssl://takserver:8089 |
 | REMOTE_SSL_SERVER_CERTIFICATE | empty | (mandatory for ssl) User certificate in PEM format |
 | REMOTE_SSL_SERVER_KEY | empty | (mandatory for ssl) User certificate key in PEM format |
+| UPDATE_RATE | 5 | (optional) Update rate in seconds (how often data is sent to the server) |
 | UUID | empty | (optional) Set feeder UID - if not set, the feeder will create one |
 | MQTT_URL | wss://meri.digitraffic.fi:443/mqtt | (optional) Set MQTT URL |
 | CALLSIGN | ais-traffic-fin | (optional) Callsign for heartbeat |

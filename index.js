@@ -11,6 +11,7 @@ const url = process.env.REMOTE_SERVER_URL
 const sslCert = process.env.REMOTE_SSL_SERVER_CERTIFICATE
 const sslKey = process.env.REMOTE_SSL_SERVER_KEY
 const logCot = (typeof process.env.LOGCOT !== 'undefined') ? process.env.LOGCOT : false;
+const intervallSecs = (typeof process.env.UPDATE_RATE !== 'undefined') ? process.env.UPDATE_RATE : 5;
 
 const heartbeatIntervall = 30 * 1000;
 
@@ -73,7 +74,7 @@ const run = () => {
       }
     }
     console.log('----------------------------------------')
-    setTimeout(dumpObjects, 1000);
+    setTimeout(dumpObjects, (intervallSecs * 1000));
   }
 
   dumpObjects();
