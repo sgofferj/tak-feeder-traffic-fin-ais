@@ -20,7 +20,7 @@ The following values are supported and can be provided either as environment var
 | REMOTE_SSL_SERVER_KEY | empty | (mandatory for ssl) User certificate key in PEM format |
 | UUID | empty | (optional) Set feeder UID - if not set, the feeder will create one |
 | MQTT_URL | wss://meri.digitraffic.fi:443/mqtt | (optional) Set MQTT URL |
-| CALLSIGN | adsb.one | (optional) Callsign for heartbeat |
+| CALLSIGN | ais-traffic-fin | (optional) Callsign for heartbeat |
 | MYCOT | a-f-G-U | (optional) CoT type for heartbeat |
 
 Note: At the moment, only SSL TCP connections are supported.
