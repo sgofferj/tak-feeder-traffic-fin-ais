@@ -70,10 +70,10 @@ const run = () => {
       let cotevent = functions.ais2cot(cot);
       if (typeof(cotevent) !== 'undefined') {
         client.write(cotevent);
-        console.log(JSON.stringify(cot));
+        //console.log(JSON.stringify(cot));
       }
     }
-    console.log('----------------------------------------')
+    //console.log('----------------------------------------')
     setTimeout(dumpObjects, (intervallSecs * 1000));
   }
 
