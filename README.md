@@ -7,9 +7,8 @@ Feed AIS data from the Finnish Traffic Authority into your TAK server
 
 Licensed under the GNU General Public License V3 or later.
 
-<font color="red">**WIP - NOT READY FOR PRODUCTION**</font>
-
 ## Description
+The Finnish Traffic Authority provides free API access to the AIS data from their receiver network which covers most of the Baltic Sea, the Bay of Finland and inland waters. This container connects to the Digitraffic MQTT server and feeds the data to a TAK server. The position data is submitted separately from the metadata (ship's name, etc.), so after starting the container, it will take some time before all ships are identified and show their proper icons and data.
 ## Configuration
 The following values are supported and can be provided either as environment variables or through an .env-file.
 
@@ -25,6 +24,8 @@ The following values are supported and can be provided either as environment var
 | MYCOT | a-f-G-U | (optional) CoT type for heartbeat |
 
 Note: At the moment, only SSL TCP connections are supported.
+
+A word about the update rate: Ships are moving fairly slow, so an update rate of 5 to 10 seconds should be sufficient. The container will cache all received position and metadata and submit all ships it has position data for to the TAK server.
 ## Certificates
 These are the server-issued certificate and key files. Before using, the password needs to be removed from the key file with `openssl rsa -in cert.key -out cert-nopw.key`. OpenSSL will ask for the key password which usually is "atakatak".
 
