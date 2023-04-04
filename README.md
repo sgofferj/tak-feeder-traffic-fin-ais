@@ -8,7 +8,7 @@ Feed AIS data from the Finnish Traffic Authority into your TAK server
 Licensed under the GNU General Public License V3 or later.
 
 ## Description
-The Finnish Traffic Authority provides free API access to the AIS data from their receiver network which covers most of the Baltic Sea, the Bay of Finland and inland waters. This container connects to the Digitraffic MQTT server and feeds the data to a TAK server. The position data is submitted separately from the metadata (ship's name, etc.), so after starting the container, it will take some time before all ships are identified and show their proper icons and data.
+The Finnish Traffic Authority provides free API access to the AIS data from their receiver network which covers most of the Baltic Sea, the Gulf of Finland and inland waters. This container connects to the Digitraffic MQTT server and feeds the data to a TAK server. The position data is submitted separately from the metadata (ship's name, etc.), so after starting the container, it will take some time before all ships are identified and show their proper icons and data.
 ## Configuration
 The following values are supported and can be provided either as environment variables or through an .env-file.
 
