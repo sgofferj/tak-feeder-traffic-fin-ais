@@ -8,11 +8,14 @@ const { adsb2cot } = require('./lib/functions.js');
 const objects = require('./lib/objectcache.js')
 
 const url = process.env.REMOTE_SERVER_URL
-const sslCert = process.env.REMOTE_SSL_SERVER_CERTIFICATE
-const sslKey = process.env.REMOTE_SSL_SERVER_KEY
-const logCot = (typeof process.env.LOGCOT !== 'undefined') ? process.env.LOGCOT : false;
-const intervallSecs = (typeof process.env.UPDATE_RATE !== 'undefined') ? process.env.UPDATE_RATE : 5;
+const sslCert = process.env.REMOTE_SSL_USER_CERTIFICATE
+const sslKey = process.env.REMOTE_SSL_USER_KEY
 
+if (!functions.checkFile(sslCert)) process.exit();
+if (!functions.checkFile(sslKey)) process.exit();
+
+const logCot = (typeof process.env.LOGCOT !== 'undefined') ? (process.env.LOGCOT == "true") : false;
+const intervallSecs = (typeof process.env.UPDATE_RATE !== 'undefined') ? process.env.UPDATE_RATE : 5;
 const heartbeatIntervall = 30 * 1000;
 
 process.env.TZ = 'UTC';
@@ -36,26 +39,31 @@ const run = () => {
     if (client.authorized) {
       console.log("Connection authorized by a Certificate Authority.")
     } else {
-      console.log("Connection not authorized: " + client.authorizationError)
+      console.log("Connection not authorized: " + client.authorizationError + " - ignoring")
     }
     heartbeat();
   })
 
   client.on('data', (data) => {
-    console.log(data.toString());
+    if (logCot === true) {
+      console.log(data.toString());
+    }
   })
 
   client.on('error', (err) => {
-    console.error(`Could not connect to SSL host ${url}`)
+    console.error(`Could not connect to SSL host ${url}`);
+    console.error(err);
+    process.exit();
   })
 
   client.on('close', () => {
     console.info(`Connection to SSL host ${url} closed`)
+    process.exit();
   })
 
   function heartbeat() {
     client.write(functions.heartbeatcot(heartbeatIntervall));
-    if (logCot) {
+    if (logCot === true) {
       console.log(functions.heartbeatcot(heartbeatIntervall));
       console.log('----------------------------------------')
     }

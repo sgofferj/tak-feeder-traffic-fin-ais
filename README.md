@@ -15,8 +15,8 @@ The following values are supported and can be provided either as environment var
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | REMOTE_SERVER_URL | empty | (mandatory) TAK server full URL, e.g. ssl://takserver:8089 |
-| REMOTE_SSL_SERVER_CERTIFICATE | empty | (mandatory for ssl) User certificate in PEM format |
-| REMOTE_SSL_SERVER_KEY | empty | (mandatory for ssl) User certificate key file (xxx.key) |
+| REMOTE_SSL_USER_CERTIFICATE | empty | (mandatory for ssl) User certificate in PEM format |
+| REMOTE_SSL_USER_KEY | empty | (mandatory for ssl) User certificate key file (xxx.key) |
 | UPDATE_RATE | 5 | (optional) Update rate in seconds (how often data is sent to the server) |
 | UUID | empty | (optional) Set feeder UID - if not set, the feeder will create one |
 | MQTT_URL | wss://meri.digitraffic.fi:443/mqtt | (optional) Set MQTT URL |
@@ -55,8 +55,8 @@ services:
       - <path to data-directory>:/data:ro
     environment:
       - REMOTE_SERVER_URL=ssl://tak-server:8089
-      - REMOTE_SSL_SERVER_CERTIFICATE=/data/cert.pem
-      - REMOTE_SSL_SERVER_KEY=/data/key.pem
+      - REMOTE_SSL_USER_CERTIFICATE=/data/cert.pem
+      - REMOTE_SSL_USER_KEY=/data/key.pem
       - CALLSIGN=aisfeeder
       - MYCOT=a-f-G-U
 
