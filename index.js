@@ -46,7 +46,7 @@ const run = () => {
 
   client.on('data', (data) => {
     if (logCot === true) {
-      console.log(data.toString());
+      //console.log(data.toString());
     }
   })
 
@@ -77,8 +77,10 @@ const run = () => {
     for (const [uid, cot] of Object.entries(cache)) {
       let cotevent = functions.ais2cot(cot);
       if (typeof(cotevent) !== 'undefined') {
+        if (logCot === true) {
+          console.log(cotevent);
+        }
         client.write(cotevent);
-        //console.log(JSON.stringify(cot));
       }
     }
     //console.log('----------------------------------------')
